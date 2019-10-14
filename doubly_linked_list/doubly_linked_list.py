@@ -1,13 +1,13 @@
 from typing import TypeVar, Any, Optional, Union
-
 """Each ListNode holds a reference to its previous node
 as well as its next node in the List."""
 
 T = TypeVar("T")
+U = TypeVar("U")
 
 
 class ListNode:
-    def __init__(self, value: T, prev: T = None, next: T = None):
+    def __init__(self, value: T, prev: U = None, next: U = None):
         self.value = value
         self.prev = prev
         self.next = next
