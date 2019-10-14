@@ -1,9 +1,13 @@
+from typing import TypeVar, Any, Optional, Union
+
 """Each ListNode holds a reference to its previous node
 as well as its next node in the List."""
 
+T = TypeVar("T")
+
 
 class ListNode:
-    def __init__(self, value, prev: ListNode = None, next: ListNode = None):
+    def __init__(self, value: T, prev: T = None, next: T = None):
         self.value = value
         self.prev = prev
         self.next = next
@@ -12,7 +16,7 @@ class ListNode:
     after this node. Note that this node could already
     have a next node it is point to."""
 
-    def insert_after(self, value):
+    def insert_after(self, value: T):
         current_next = self.next
         self.next = ListNode(value, self, current_next)
         if current_next:
@@ -22,7 +26,7 @@ class ListNode:
     before this node. Note that this node could already
     have a previous node it is point to."""
 
-    def insert_before(self, value):
+    def insert_before(self, value: T):
         current_prev = self.prev
         self.prev = ListNode(value, current_prev, self)
         if current_prev:
@@ -55,7 +59,7 @@ class DoublyLinkedList:
     as the new head of the list. Don't forget to handle 
     the old head node's previous pointer accordingly."""
 
-    def add_to_head(self, value):
+    def add_to_head(self, value: T):
         # make a new node
         new_node = ListNode(value, None, None)
         # grow the length of the linked list
@@ -91,7 +95,7 @@ class DoublyLinkedList:
     as the new tail of the list. Don't forget to handle 
     the old tail node's next pointer accordingly."""
 
-    def add_to_tail(self, value):
+    def add_to_tail(self, value: T):
         # make a new node
         new_node = ListNode(value, None, None)
         # grow the length of the linked list
@@ -126,7 +130,7 @@ class DoublyLinkedList:
     """Removes the input node from its current spot in the 
     List and inserts it as the new head node of the List."""
 
-    def move_to_front(self, node):
+    def move_to_front(self, node: ListNode):
         # if node is head then return
         if node is self.head:
             return
@@ -149,7 +153,7 @@ class DoublyLinkedList:
     """Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List."""
 
-    def move_to_end(self, node):
+    def move_to_end(self, node: ListNode):
                 # if node is tail then return
         if node is self.tail:
             return
@@ -172,7 +176,7 @@ class DoublyLinkedList:
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
 
-    def delete(self, node):
+    def delete(self, node: Optional[Union[Any, ListNode]]):
         # decrement the length
         self.length -= 1
         # if not head or tail return
