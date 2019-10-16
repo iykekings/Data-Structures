@@ -1,5 +1,3 @@
-# import sys
-# sys.path.append('.')
 from doubly_linked_list import DoublyLinkedList
 
 
