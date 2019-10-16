@@ -1,4 +1,4 @@
-from typing import TypeVar, Any, Optional, Union
+from typing import TypeVar, Any, Optional, Union, List
 """Each ListNode holds a reference to its previous node
 as well as its next node in the List."""
 
@@ -7,7 +7,7 @@ U = TypeVar("U")
 
 
 class ListNode:
-    def __init__(self, value: T, prev: U = None, next: U = None):
+    def __init__(self, value: List, prev: U = None, next: U = None):
         self.value = value
         self.prev = prev
         self.next = next
@@ -16,7 +16,7 @@ class ListNode:
     after this node. Note that this node could already
     have a next node it is point to."""
 
-    def insert_after(self, value: T):
+    def insert_after(self, value: List):
         current_next = self.next
         self.next = ListNode(value, self, current_next)
         if current_next:
@@ -26,7 +26,7 @@ class ListNode:
     before this node. Note that this node could already
     have a previous node it is point to."""
 
-    def insert_before(self, value: T):
+    def insert_before(self, value: List):
         current_prev = self.prev
         self.prev = ListNode(value, current_prev, self)
         if current_prev:
@@ -59,7 +59,7 @@ class DoublyLinkedList:
     as the new head of the list. Don't forget to handle 
     the old head node's previous pointer accordingly."""
 
-    def add_to_head(self, value: T):
+    def add_to_head(self, value: List):
         # make a new node
         new_node = ListNode(value, None, None)
         # grow the length of the linked list
@@ -95,7 +95,7 @@ class DoublyLinkedList:
     as the new tail of the list. Don't forget to handle 
     the old tail node's next pointer accordingly."""
 
-    def add_to_tail(self, value: T):
+    def add_to_tail(self, value: List):
         # make a new node
         new_node = ListNode(value, None, None)
         # grow the length of the linked list
